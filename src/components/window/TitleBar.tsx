@@ -18,37 +18,49 @@ export function TitleBar({
   isMaximized,
 }: TitleBarProps): ReactElement {
   return (
-    <div className="window-titlebar flex h-8 shrink-0 cursor-grab items-center justify-between rounded-t-lg bg-white/50 dark:bg-zinc-800/50 px-3 active:cursor-grabbing select-none">
-      <div className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-200">
+    <div className="window-titlebar flex h-8 shrink-0 cursor-grab items-center justify-between rounded-t-lg bg-white/50 dark:bg-zinc-800/50 active:cursor-grabbing select-none">
+      <div className="flex items-center gap-2 px-3 text-sm text-zinc-700 dark:text-zinc-200">
         <span>{icon}</span>
         <span className="font-medium">{title}</span>
       </div>
-      <div className="flex items-center gap-1.5">
+      <div className="flex h-full items-stretch">
         <button
           type="button"
           onClick={onMinimize}
-          className="flex h-4 w-4 items-center justify-center rounded-full bg-[#ffbd2e] hover:bg-[#e5a928] transition-colors"
+          className="flex w-11 items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200/70 dark:hover:bg-zinc-600/70 transition-colors"
           aria-label="Minimize window"
         >
-          <span className="text-[8px] leading-none text-yellow-900/60">−</span>
+          <svg width="10" height="1" viewBox="0 0 10 1" fill="currentColor">
+            <rect width="10" height="1" />
+          </svg>
         </button>
         <button
           type="button"
           onClick={onMaximize}
-          className="flex h-4 w-4 items-center justify-center rounded-full bg-[#28c940] hover:bg-[#1fb636] transition-colors"
+          className="flex w-11 items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200/70 dark:hover:bg-zinc-600/70 transition-colors"
           aria-label={isMaximized ? 'Restore window' : 'Maximize window'}
         >
-          <span className="text-[8px] leading-none text-green-900/60">
-            {isMaximized ? '⧉' : '□'}
-          </span>
+          {isMaximized ? (
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1">
+              <rect x="2" y="0" width="8" height="8" />
+              <polyline points="0,2 0,10 8,10" />
+            </svg>
+          ) : (
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1">
+              <rect x="0" y="0" width="10" height="10" />
+            </svg>
+          )}
         </button>
         <button
           type="button"
           onClick={onClose}
-          className="flex h-4 w-4 items-center justify-center rounded-full bg-[#ff5f57] hover:bg-[#e5453d] transition-colors"
+          className="flex w-11 items-center justify-center rounded-tr-lg text-zinc-600 dark:text-zinc-300 hover:bg-red-500 hover:text-white transition-colors"
           aria-label="Close window"
         >
-          <span className="text-[8px] leading-none text-red-900/60">✕</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+            <line x1="0" y1="0" x2="10" y2="10" />
+            <line x1="10" y1="0" x2="0" y2="10" />
+          </svg>
         </button>
       </div>
     </div>

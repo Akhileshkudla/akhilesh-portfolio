@@ -13,27 +13,47 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    id: 'fast',
-    name: 'F.A.S.T',
-    shortName: 'F.A.S.T',
-    description: 'Fully Automated Software Transformation',
+    id: 'siprotec',
+    name: 'SIPROTEC V',
+    shortName: 'SIPROTEC V',
+    description: 'Next-gen virtual substation protection & control platform',
     longDescription:
-      'An AI-driven system that automates the complete Software Development Lifecycle (SDLC) — from requirements gathering and architecture design to code generation, testing, and deployment. Powered by LLM agents orchestrated in a multi-step pipeline.',
-    techStack: ['.NET', 'Python', 'Azure', 'OpenAI', 'LangChain', 'Docker'],
+      'Team Architect for SIPROTEC V — Siemens\' next-generation virtual substation protection and control platform, scaling up to 60 IEDs on a single server with proven algorithms, IEC 61850 compliance, and an AI-ready architecture layer enabling intelligent diagnostics and automation.',
+    techStack: ['.NET', 'IEC 61850', 'Azure', 'C#', 'Virtualization'],
     status: 'In Progress',
-    domain: 'AI / Developer Tools',
-    githubUrl: '#',
+    domain: 'Substation Protection / IEC 61850',
   },
   {
-    id: 'substation',
-    name: 'Unified Substation Visualiser',
-    shortName: 'Substation Viz',
-    description: 'Visualize entire electrical substations from equipment to communication',
+    id: 'fast',
+    name: 'FAST — Fully Autonomous Software Transformation',
+    shortName: 'FAST (ADLC)',
+    description: 'AI-powered Complete SDLC Automation tool',
     longDescription:
-      'A unified visualization platform for electrical substations that renders the complete picture — from physical equipment and topology to communication protocols and data flows. Supports real-time monitoring and interactive drill-down from substation level to individual device.',
-    techStack: ['.NET', 'Azure', 'TypeScript', 'React', 'IEC 61850', 'Docker'],
+      'Conceived and architected FAST — an AI-powered Autonomous Development Lifecycle system that automates requirements analysis, design, code generation, testing, and deployment end-to-end. Built multi-agent orchestration pipelines, RAG systems for context-aware code synthesis, and MCP integrations for structured AI-tool workflows. Deployed on Azure AI Foundry with autonomous CI/CD.',
+    techStack: ['.NET', 'Python', 'Azure AI Foundry', 'Azure OpenAI', 'LangChain', 'Semantic Kernel', 'RAG', 'MCP'],
+    status: 'In Progress',
+    domain: 'AI / Autonomous SDLC',
+  },
+  {
+    id: 'digsi5',
+    name: 'DIGSI 5',
+    shortName: 'DIGSI 5',
+    description: 'Siemens engineering tool for substation protection devices',
+    longDescription:
+      'Led development of DIGSI 5, Siemens\' flagship engineering tool for operating and configuring protection devices in power substation networks. Progressed from developer to architect over 8 years — built the API layer, led NFR initiatives to meet IEC standards, built unit test frameworks, developed Ranorex automation modules, and managed multi-threaded device communication across substations. 🏆 Instant Puraskar Award recipient.',
+    techStack: ['.NET', 'WPF', 'WCF', 'NUnit', 'Ranorex', 'IEC 61850', 'C#'],
     status: 'Completed',
-    domain: 'Energy / Industrial',
-    githubUrl: '#',
+    domain: 'Substation Engineering Tools',
+  },
+  {
+    id: 'infoimage',
+    name: 'InfoImage',
+    shortName: 'InfoImage',
+    description: 'High-volume Enterprise Content Management system',
+    longDescription:
+      'Developed modules for InfoImage, an enterprise-scale ECM, workflow, and record management platform at NTT Data. Performed HLD/LLD, developed in C++, C#, .NET 4.0, and SQL. Collaborated with distributed teams across India, the US, and Germany in an Agile environment. 🏆 Best Team Award — InfoImage 2014.',
+    techStack: ['C#', 'C++', '.NET 4.0', 'SQL', 'Agile'],
+    status: 'Completed',
+    domain: 'ECM / Document Management',
   },
 ];

@@ -71,7 +71,7 @@ export function BootScreen({ onComplete }: BootScreenProps): ReactElement {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.45, duration: 0.6 }}
       >
-        Software Architect &amp; AI Systems Builder
+        Software Architect &amp; AI Systems Engineer
       </motion.p>
 
       {/* Progress bar */}

@@ -25,41 +25,36 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const PROFILE = {
   name: 'Akhilesh K',
-  title: 'Software Architect & AI Systems Builder',
-  location: 'India 🇮🇳',
+  title: 'Software Architect | AI Systems Engineer',
+  location: 'Bangalore, India 🇮🇳',
   initials: 'AK',
   about:
-    '10+ years of experience designing and building scalable, high-performance backend systems. Currently focused on building intelligent AI applications and autonomous pipelines that transform how software is conceived, designed, and delivered.',
+    'Software Architect with 12+ years of progressive experience in enterprise software, AI systems, and critical infrastructure. Currently spearheading AI-powered transformation initiatives at Siemens, architecting multi-agent systems, RAG pipelines, and MCP integrations on Azure AI Foundry. Deep domain expertise in IEC 61850-based substation protection (SIPROTEC ecosystem) and a strong track record leading cross-functional, globally distributed teams.',
 } as const;
 
 export const EXPERIENCE: ExperienceEntry[] = [
   {
-    period: '2023 – Present',
-    title: 'AI Systems Architect',
+    period: 'Apr 2016 – Present',
+    title: 'Software Architect — Siemens Technology Services',
     description:
-      'Building AI-driven applications, LLM pipelines, and autonomous software engineering tools. Creator of F.A.S.T — Fully Automated Software Transformation system.',
+      'Team Architect for SIPROTEC V — next-gen virtual substation protection platform scaling to 60 IEDs on a single server. Creator of FAST (Fully Autonomous Software Transformation), an AI-powered SDLC automation tool using multi-agent orchestration, RAG pipelines, and MCP on Azure AI Foundry. Previously led DIGSI 5 engineering — the flagship tool for configuring Siemens protection devices — from developer to architect. 🏆 Received "Instant Puraskar" Award for outstanding contribution to usability and performance.',
   },
   {
-    period: '2018 – 2023',
-    title: 'Senior Software Architect',
+    period: 'Jan 2014 – Mar 2016',
+    title: 'Software Developer — NTT Data',
     description:
-      'Designed and led development of enterprise-scale backend platforms. Expertise in .NET, Azure cloud-native architecture, and microservices.',
-  },
-  {
-    period: '2013 – 2018',
-    title: 'Software Developer → Lead Developer',
-    description:
-      'Built backend systems and APIs across multiple domains including energy, finance, and enterprise SaaS. Progressed from developer to technical lead.',
+      'Developed modules for InfoImage, a high-volume Enterprise Content Management and document management system. Performed HLD/LLD, developed in C++, C#, .NET 4.0, and SQL. Collaborated with distributed teams across India, US, and Germany. 🏆 Received "Best Team Award" — InfoImage 2014.',
   },
 ];
 
 export const EDUCATION: EducationEntry[] = [
   {
-    degree: 'B.E. in Computer Science',
-    details: 'Focused on software engineering, algorithms, and systems design.',
+    degree: 'B.E. in Electronics & Communication Engineering',
+    details: 'Dr. MV Shetty Institute of Technology, Mangalore, Karnataka.',
   },
 ];
 
 export const CERTIFICATIONS: string[] = [
-  'Microsoft Azure Solutions Architect',
+  'Microsoft Certified: Azure Solutions Architect Expert',
+  'Certified Kubernetes Application Developer (CKAD) — CNCF / Linux Foundation',
 ];

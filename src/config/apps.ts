@@ -3,6 +3,7 @@ import { AboutApp } from '@/components/apps/AboutApp';
 import { ProjectsApp } from '@/components/apps/ProjectsApp';
 import { SkillsApp } from '@/components/apps/SkillsApp';
 import { ContactApp } from '@/components/apps/ContactApp';
+import { ResumeApp } from '@/components/apps/ResumeApp';
 
 export const APP_CONFIG: Record<AppId, AppConfig> = {
   about: {
@@ -41,6 +42,15 @@ export const APP_CONFIG: Record<AppId, AppConfig> = {
     defaultPosition: { x: 260, y: 120 },
     component: ContactApp,
   },
+  resume: {
+    id: 'resume',
+    label: 'Resume',
+    icon: '📄',
+    windowTitle: 'Resume — Akhilesh K',
+    defaultSize: { width: 420, height: 280 },
+    defaultPosition: { x: 320, y: 140 },
+    component: ResumeApp,
+  },
 };
 
-export const APP_ORDER: AppId[] = ['about', 'projects', 'skills', 'contact'];
+export const APP_ORDER: AppId[] = ['about', 'projects', 'skills', 'contact', 'resume'];

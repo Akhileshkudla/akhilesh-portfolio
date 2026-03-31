@@ -65,7 +65,7 @@ export function ContactApp(): ReactElement {
           <div className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed space-y-4">
             <p>Hi there,</p>
             <p>
-              I&apos;m <strong>Akhilesh K</strong> — Software Architect &amp; AI Systems Builder.
+              I&apos;m <strong>Akhilesh K</strong> — Software Architect &amp; AI Systems Engineer at Siemens.
             </p>
             <p>
               If you&apos;d like to discuss a project, collaboration, or just say hello, reach out
@@ -86,13 +86,13 @@ export function ContactApp(): ReactElement {
           {/* Action buttons */}
           <div className="flex gap-3 flex-wrap">
             <a
-              href="mailto:akhikudla@gmail.com"
+              href="mailto:akhismail@ymail.com"
               className="flex items-center gap-2 px-4 py-2 bg-[#0078d4] hover:bg-[#006cbd] text-white text-sm rounded"
             >
               📧 Send Email
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/akhileshkudla/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 text-sm text-zinc-800 dark:text-zinc-200 rounded"
@@ -100,7 +100,7 @@ export function ContactApp(): ReactElement {
               💼 LinkedIn
             </a>
             <a
-              href="#"
+              href="https://github.com/Akhileshkudla"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 text-sm text-zinc-800 dark:text-zinc-200 rounded"

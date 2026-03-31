@@ -46,7 +46,7 @@ export function StartMenu(): ReactElement {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.97 }}
           transition={{ duration: 0.2, ease: 'easeOut' }}
-          className="absolute bottom-14 left-1/2 z-[200] w-[500px] -translate-x-1/2 rounded-xl border border-white/20 dark:border-white/10 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl shadow-2xl p-6"
+          className="absolute bottom-14 left-2 z-[200] w-[500px] rounded-xl border border-white/20 dark:border-white/10 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl shadow-2xl p-6"
         >
           {/* Pinned section */}
           <div className="mb-5">
@@ -101,7 +101,7 @@ export function StartMenu(): ReactElement {
               </div>
               <div>
                 <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Akhilesh K</p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400">akhikudla@gmail.com</p>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400">akhismail@ymail.com</p>
               </div>
             </div>
           </div>

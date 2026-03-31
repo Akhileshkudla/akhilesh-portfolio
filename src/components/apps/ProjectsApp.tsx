@@ -1,4 +1,4 @@
-import { type ReactElement, useState } from 'react';
+import { type ReactElement, useState, useRef, useCallback } from 'react';
 import { type Project, PROJECTS } from '@/data/projects';
 
 const STATUS_STYLES: Record<Project['status'], string> = {
@@ -7,9 +7,38 @@ const STATUS_STYLES: Record<Project['status'], string> = {
   Archived: 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300',
 };
 
+const MIN_PANEL_WIDTH = 220;
+const MAX_PANEL_WIDTH = 520;
+const DEFAULT_PANEL_WIDTH = 320;
+
 export function ProjectsApp(): ReactElement {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [panelWidth, setPanelWidth] = useState(DEFAULT_PANEL_WIDTH);
+  const isDragging = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const selected = PROJECTS.find((p) => p.id === selectedId) ?? null;
+
+  const onMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    isDragging.current = true;
+
+    const onMouseMove = (ev: MouseEvent) => {
+      if (!isDragging.current || !containerRef.current) return;
+      const containerRight = containerRef.current.getBoundingClientRect().right;
+      const newWidth = Math.min(MAX_PANEL_WIDTH, Math.max(MIN_PANEL_WIDTH, containerRight - ev.clientX));
+      setPanelWidth(newWidth);
+    };
+
+    const onMouseUp = () => {
+      isDragging.current = false;
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+  }, []);
 
   return (
     <div className="flex h-full flex-col">
@@ -29,7 +58,7 @@ export function ProjectsApp(): ReactElement {
       </div>
 
       {/* Main content */}
-      <div className="flex flex-1 overflow-hidden">
+      <div ref={containerRef} className="flex flex-1 overflow-hidden">
         {/* Left sidebar — tree */}
         <aside className="flex w-44 shrink-0 flex-col border-r border-zinc-200 dark:border-zinc-700 p-3 text-xs text-zinc-600 dark:text-zinc-400">
           <div className="flex items-center gap-1.5">
@@ -69,9 +98,17 @@ export function ProjectsApp(): ReactElement {
           ))}
         </div>
 
-        {/* Right — detail panel */}
+        {/* Right — detail panel with resize handle */}
         {selected && (
-          <DetailPanel project={selected} />
+          <>
+            {/* Drag handle */}
+            <div
+              onMouseDown={onMouseDown}
+              className="w-1 shrink-0 cursor-col-resize bg-zinc-200 dark:bg-zinc-700 hover:bg-[#0078d4] transition-colors"
+              title="Drag to resize"
+            />
+            <DetailPanel project={selected} width={panelWidth} />
+          </>
         )}
       </div>
     </div>
@@ -80,11 +117,15 @@ export function ProjectsApp(): ReactElement {
 
 interface DetailPanelProps {
   project: Project;
+  width: number;
 }
 
-function DetailPanel({ project }: DetailPanelProps): ReactElement {
+function DetailPanel({ project, width }: DetailPanelProps): ReactElement {
   return (
-    <aside className="flex w-64 shrink-0 flex-col gap-4 overflow-y-auto border-l border-zinc-200 dark:border-zinc-700 p-4">
+    <aside
+      style={{ width }}
+      className="flex shrink-0 flex-col gap-4 overflow-y-auto border-l border-zinc-200 dark:border-zinc-700 p-4"
+    >
       <div>
         <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">{project.name}</h3>
         <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">{project.description}</p>
