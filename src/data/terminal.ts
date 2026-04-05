@@ -88,7 +88,7 @@ const COMMANDS: TerminalCommand[] = [
         PROFILE.about,
         '',
         'Core Expertise:',
-        ...CORE_EXPERTISE.map((e) => `  ${e.num}. ${e.title} — ${e.desc}`),
+        ...CORE_EXPERTISE.map((ex) => `  ${ex.num}. ${ex.title} — ${ex.desc}`),
       ];
       return [{ type: 'success', content: lines.join('\n') }];
     },

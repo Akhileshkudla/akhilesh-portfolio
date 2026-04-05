@@ -23,6 +23,15 @@ export const NAV_ITEMS: NavItem[] = [
   { id: 'education', label: 'Education', icon: '🎓' },
 ];
 
+export const CORE_EXPERTISE = [
+  { num: '01', title: 'Software Architecture',    desc: 'Distributed systems, DDD, microservices, and API design' },
+  { num: '02', title: 'Cloud Infrastructure',     desc: 'Azure, AWS, GCP — multi-cloud design and IaC' },
+  { num: '03', title: 'Backend Platforms',        desc: '.NET, Node.js, GraphQL' },
+  { num: '04', title: 'Identity & Security',      desc: 'OAuth2, OIDC, SSO, encryption' },
+  { num: '05', title: 'AI & Data Systems',        desc: 'RAG pipelines, agentic AI, Databricks, vector search' },
+  { num: '06', title: 'DevOps & Platform',        desc: 'K8s, Docker, CI/CD, Bicep, Terraform, observability' },
+];
+
 export const PROFILE = {
   name: 'Akhilesh K',
   title: 'Software Architect | AI Systems Engineer',
