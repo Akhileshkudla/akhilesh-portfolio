@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react';
 
-export type AppId = 'about' | 'projects' | 'skills' | 'contact' | 'resume';
+export type AppId = 'about' | 'projects' | 'skills' | 'contact' | 'resume' | 'terminal' | 'memoryGame';
 
 export interface AppConfig {
   id: AppId;

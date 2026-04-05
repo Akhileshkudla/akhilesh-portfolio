@@ -14,23 +14,13 @@ export function StartButton(): ReactElement {
       type="button"
       onClick={handleClick}
       onMouseDown={(e) => { e.stopPropagation(); }}
-      className="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
+      className={`flex h-9 w-9 items-center justify-center rounded-lg transition-all ${
+        isOpen ? 'bg-white/15 dark:bg-white/10 scale-95' : 'hover:bg-white/10 dark:hover:bg-white/10'
+      }`}
       aria-label={isOpen ? 'Close Start menu' : 'Open Start menu'}
       aria-expanded={isOpen}
     >
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="text-zinc-700 dark:text-zinc-200"
-      >
-        <rect x="1" y="1" width="8" height="8" rx="1.5" fill="currentColor" />
-        <rect x="11" y="1" width="8" height="8" rx="1.5" fill="currentColor" />
-        <rect x="1" y="11" width="8" height="8" rx="1.5" fill="currentColor" />
-        <rect x="11" y="11" width="8" height="8" rx="1.5" fill="currentColor" />
-      </svg>
+      <img src="/logo.svg" alt="AK Logo" className="w-7 h-7 object-contain" />
     </button>
   );
 }

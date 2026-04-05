@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { useContextMenuStore } from '@/store/contextMenuStore';
 
 interface TitleBarProps {
   title: string;
@@ -17,8 +18,29 @@ export function TitleBar({
   onClose,
   isMaximized,
 }: TitleBarProps): ReactElement {
+  const openMenu = useContextMenuStore((s) => s.open);
+
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openMenu({ x: e.clientX, y: e.clientY }, [
+      {
+        type: 'action',
+        icon: isMaximized ? '❐' : '□',
+        label: isMaximized ? 'Restore' : 'Maximize',
+        action: onMaximize,
+      },
+      { type: 'action', icon: '─', label: 'Minimize', action: onMinimize },
+      { type: 'separator' },
+      { type: 'action', icon: '✕', label: 'Close', action: onClose },
+    ]);
+  };
+
   return (
-    <div className="window-titlebar flex h-8 shrink-0 cursor-grab items-center justify-between rounded-t-lg bg-white/50 dark:bg-zinc-800/50 active:cursor-grabbing select-none">
+    <div
+      className="window-titlebar flex h-8 shrink-0 cursor-grab items-center justify-between rounded-t-lg bg-white/50 dark:bg-zinc-800/50 active:cursor-grabbing select-none"
+      onContextMenu={handleContextMenu}
+    >
       <div className="flex items-center gap-2 px-3 text-sm text-zinc-700 dark:text-zinc-200">
         <span>{icon}</span>
         <span className="font-medium">{title}</span>

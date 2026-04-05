@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import { useWindowStore } from '@/store/windowStore';
+import { useContextMenuStore } from '@/store/contextMenuStore';
 import { APP_CONFIG, APP_ORDER } from '@/config/apps';
 import type { AppId } from '@/types';
 
@@ -10,6 +11,8 @@ export function TaskbarIcons(): ReactElement {
   const minimizeWindow = useWindowStore((s) => s.minimizeWindow);
   const restoreWindow = useWindowStore((s) => s.restoreWindow);
   const bringToFront = useWindowStore((s) => s.bringToFront);
+  const closeWindow = useWindowStore((s) => s.closeWindow);
+  const openMenu = useContextMenuStore((s) => s.open);
 
   const handleClick = (appId: AppId): void => {
     const win = windows[appId];
@@ -26,6 +29,29 @@ export function TaskbarIcons(): ReactElement {
     }
   };
 
+  const handleContextMenu = (e: React.MouseEvent, appId: AppId): void => {
+    e.preventDefault();
+    e.stopPropagation();
+    const win = windows[appId];
+    if (!win) return;
+
+    const items = win.isOpen
+      ? win.isMinimized
+        ? [
+            { type: 'action' as const, icon: '▶', label: 'Restore', action: () => restoreWindow(appId) },
+            { type: 'separator' as const },
+            { type: 'action' as const, icon: '✕', label: 'Close', action: () => closeWindow(appId) },
+          ]
+        : [
+            { type: 'action' as const, icon: '─', label: 'Minimize', action: () => minimizeWindow(appId) },
+            { type: 'separator' as const },
+            { type: 'action' as const, icon: '✕', label: 'Close', action: () => closeWindow(appId) },
+          ]
+      : [{ type: 'action' as const, icon: '▶', label: 'Open', action: () => openWindow(appId) }];
+
+    openMenu({ x: e.clientX, y: e.clientY }, items);
+  };
+
   return (
     <div className="flex items-center gap-1">
       {APP_ORDER.map((appId) => {
@@ -38,6 +64,7 @@ export function TaskbarIcons(): ReactElement {
             key={appId}
             type="button"
             onClick={() => { handleClick(appId); }}
+            onContextMenu={(e) => { handleContextMenu(e, appId); }}
             className="flex h-9 w-9 flex-col items-center justify-center rounded-lg hover:bg-white/10 dark:hover:bg-white/10 active:scale-90 transition-all"
             aria-label={
               !win?.isOpen

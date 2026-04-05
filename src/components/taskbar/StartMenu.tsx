@@ -46,7 +46,7 @@ export function StartMenu(): ReactElement {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.97 }}
           transition={{ duration: 0.2, ease: 'easeOut' }}
-          className="absolute bottom-14 left-2 z-[200] w-[500px] rounded-xl border border-white/20 dark:border-white/10 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl shadow-2xl p-6"
+          className="absolute bottom-14 left-0 z-[200] w-[480px] rounded-xl border border-white/20 dark:border-white/10 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl shadow-2xl p-6"
         >
           {/* Pinned section */}
           <div className="mb-5">
@@ -54,7 +54,7 @@ export function StartMenu(): ReactElement {
               <h2 className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Pinned</h2>
               <span className="text-xs text-zinc-500 dark:text-zinc-400">All apps &rarr;</span>
             </div>
-            <div className="flex justify-center gap-2">
+            <div className="grid grid-cols-5 gap-1">
               {APP_ORDER.map((id) => {
                 const app = APP_CONFIG[id];
                 return (
@@ -62,10 +62,10 @@ export function StartMenu(): ReactElement {
                     key={id}
                     type="button"
                     onClick={() => { handlePinnedClick(id); }}
-                    className="flex w-24 flex-col items-center gap-1.5 rounded-xl p-3 transition-colors hover:bg-white/10 dark:hover:bg-white/5"
+                    className="flex flex-col items-center gap-1.5 rounded-xl px-2 py-3 transition-colors hover:bg-white/10 dark:hover:bg-white/5"
                   >
                     <span className="text-3xl">{app.icon}</span>
-                    <span className="text-xs text-center text-zinc-800 dark:text-zinc-200">{app.label}</span>
+                    <span className="text-xs text-center text-zinc-800 dark:text-zinc-200 leading-tight">{app.label}</span>
                   </button>
                 );
               })}
@@ -75,18 +75,18 @@ export function StartMenu(): ReactElement {
           {/* Recommended section */}
           <div className="mb-5">
             <h2 className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">Recommended</h2>
-            <div className="flex gap-2">
+            <div className="grid grid-cols-2 gap-1">
               {PROJECTS.map((project) => (
                 <button
                   key={project.id}
                   type="button"
                   onClick={handleRecommendedClick}
-                  className="flex flex-1 items-center gap-3 rounded-xl p-3 text-left transition-colors hover:bg-white/10 dark:hover:bg-white/5"
+                  className="flex items-center gap-3 rounded-xl p-3 text-left transition-colors hover:bg-white/10 dark:hover:bg-white/5 min-w-0"
                 >
-                  <span className="text-2xl">📁</span>
-                  <div>
-                    <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200">{project.shortName}</p>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400">{project.domain}</p>
+                  <span className="text-2xl flex-shrink-0">📁</span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200 truncate">{project.shortName}</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate">{project.domain}</p>
                   </div>
                 </button>
               ))}
